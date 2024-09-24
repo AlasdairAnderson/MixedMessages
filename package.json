@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "csv": "^6.3.10",
+    "sqlite3": "^5.1.7"
+  },
+  "name": "mixedmessages",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlasdairAnderson/MixedMessages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlasdairAnderson/MixedMessages/issues"
+  },
+  "homepage": "https://github.com/AlasdairAnderson/MixedMessages#readme",
+  "description": ""
+}
