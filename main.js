@@ -1,5 +1,32 @@
 // Mixed Massagges
 
+// Read CSV File
+const fs = require('fs');
+
+const loadedCSV = []
+let line1;
+let line2;
+let line3;
+
+fs.readFile("./haiku.csv", "utf-8", (err, data) => {
+    if(err){
+        console.log(err.message);
+    } else {
+        loadedCSV.push(data);
+        rows = splitRow(loadedCSV);
+
+        console.log(rows);
+
+    }
+})
+
+function splitRow(CSVfile){
+    
+    return CSVfile[0].split('\n');
+    
+}
+
+
 let hikues = {
     line1: ["An ancient pool,","The list of a candle,", "This world of dew,", "I write, erase, rewrite"],
     line2: ["a frog jumps in", "is transferred to antoehr candel", "is a world of dew,", "erase again, and then"],
@@ -15,4 +42,4 @@ let hikues = {
     }
 }
 
-console.log(hikues.makeHaiku());
+//console.log(hikues.makeHaiku());
