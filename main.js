@@ -13,33 +13,47 @@ fs.readFile("./haiku.csv", "utf-8", (err, data) => {
         console.log(err.message);
     } else {
         loadedCSV.push(data);
-        rows = splitRow(loadedCSV);
-
-        console.log(rows);
-
+        hikues = splitCommas(splitRow(loadedCSV));
+  
+        console.log(hikues.makeHaiku());
     }
 })
 
 function splitRow(CSVfile){
-    
+
     return CSVfile[0].split('\n');
+
+}
+
+function splitCommas(rows){
+
+    const hikues = {
+        line1: [],
+        line2: [],
+        line3: [],
+        makeHaiku(){
+            //randomise to select each different line
+            const firstLine = this.line1[Math.floor(Math.random() * this.line1.length)];
+            const secondLine = this.line2[Math.floor(Math.random() * this.line2.length)];
+            const thridLine = this.line3[Math.floor(Math.random() * this.line3.length)];
     
-}
-
-
-let hikues = {
-    line1: ["An ancient pool,","The list of a candle,", "This world of dew,", "I write, erase, rewrite"],
-    line2: ["a frog jumps in", "is transferred to antoehr candel", "is a world of dew,", "erase again, and then"],
-    line3: ["the sound of water.", "spring twilight", "and yet, and yet.", "a poppy bloomes"],
-    makeHaiku(){
-        //randomise to select each different line
-        const firstLine = this.line1[Math.floor(Math.random() * this.line1.length)];
-        const secondLine = this.line2[Math.floor(Math.random() * this.line2.length)];
-        const thridLine = this.line3[Math.floor(Math.random() * this.line3.length)];
-
-        //return concatination of each line
-        return `${firstLine} ${secondLine} ${thridLine}`
+            //return concatination of each line
+            return `${firstLine} ${secondLine} ${thridLine}`
+        }
     }
+    // Split rows into seprate lines
+    for (i = 1; i < rows.length; i++){
+        const lines = rows[i].split(',');
+        if(lines.length > 3){
+            console.log("There are more than 3 lines this is not a hikue");
+            return 0;
+        }
+        // Sparate hikues into specific lines
+        hikues.line1.push(lines[0]);
+        hikues.line2.push(lines[1]);
+        hikues.line3.push(lines[2]);
+    }
+
+    return hikues
 }
 
-//console.log(hikues.makeHaiku());
